@@ -76,3 +76,5 @@ DerivedDataCache/*
 # Built Android binaries
 Packaged/*
 
+# MSP
+Content/AudioReference/*
