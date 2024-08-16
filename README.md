@@ -4,7 +4,9 @@ A repositiory for collecting MetaSound synth engines and presets for use in game
 
 ## MetaSynthOne
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/nrmiL575ntI/0.jpg)](https://www.youtube.com/watch?v=nrmiL575ntIE)
+[![MetaSynthOne video](https://img.youtube.com/vi/nrmiL575ntI/0.jpg)](https://www.youtube.com/watch?v=nrmiL575ntIE)
+
+[demo video](https://www.youtube.com/watch?v=nrmiL575ntIE)
 
 An open source, multitimbral, polyphonic synth loosely based on the excellent [AudioKit Synth One](https://audiokitpro.com/synth/) that runs inside Unreal Engine 5.
 
