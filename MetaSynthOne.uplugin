@@ -14,9 +14,28 @@
 	"IsBetaVersion": false,
 	"IsExperimentalVersion": false,
 	"Installed": false,
+	"Modules": [
+		{
+			"Name": "MS1Performer",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		}
+	],
 	"Plugins": [
 		{
 			"Name": "ModelViewViewModel",
+			"Enabled": true
+		},
+		{
+			"Name": "Metasound",
+			"Enabled": true
+		},
+		{
+			"Name": "Harmonix",
+			"Enabled": true
+		},
+		{
+			"Name": "CommonUI",
 			"Enabled": true
 		}
 	]
