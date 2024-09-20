@@ -15,8 +15,8 @@ class MS1PERFORMER_API UPerformanceWindowManager : public UEngineSubsystem
 {
 	GENERATED_BODY()
 
-	UFUNCTION(BlueprintCallable, Category = "Performance Window Manager")
-	void OpenPerformanceWindow();
+	UFUNCTION(BlueprintCallable, Category = "Performance Window Manager", meta = (WorldContext = "WorldContextObject"))
+	void OpenPerformanceWindow(const UObject* WorldContextObject);
 
 	TSharedPtr<SWindow> PerformanceWindow;
 	

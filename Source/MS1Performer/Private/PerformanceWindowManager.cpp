@@ -5,10 +5,17 @@
 #include "Rendering/SlateRenderer.h"
 #include "Widgets/Input/SButton.h"
 #include "Framework/Application/SlateApplication.h"
+#include "Widgets/Layout/SScaleBox.h"
+#include <Blueprint/UserWidget.h>
 
 
-void UPerformanceWindowManager::OpenPerformanceWindow()
+void UPerformanceWindowManager::OpenPerformanceWindow(const UObject* WorldContextObject)
 {
+	FString WidgetPath(TEXT("/MetaSynthOne/MetaSynthOne/UI/BPW_MSO_UI.BPW_MSO_UI_C"));
+
+	auto* WidgetClass = LoadClass<UUserWidget>(nullptr, *WidgetPath, nullptr, LOAD_None, nullptr);
+	auto* Widget = CreateWidget<UUserWidget>(WorldContextObject->GetWorld(), WidgetClass);
+	
 	SAssignNew(PerformanceWindow, SWindow)
 		.AutoCenter(EAutoCenter::None)
 		.Title(FText::FromString(TEXT("Control Window")))
@@ -27,26 +34,12 @@ void UPerformanceWindowManager::OpenPerformanceWindow()
 	SlateApp.AddWindow(PerformanceWindow.ToSharedRef(), true);
 
 	PerformanceWindow->SetContent(
-		SNew(SVerticalBox)
-		+ SVerticalBox::Slot()
-		.AutoHeight()
+		SNew(SScaleBox)
+		.Stretch(EStretch::Fill)
 		[
-			SNew(SButton)
-				.Text(FText::FromString(TEXT("Close Window")))
-				.OnClicked_Lambda([this]() -> FReply {
-				PerformanceWindow->RequestDestroyWindow();
-				return FReply::Handled();
-					})
+			Widget->TakeWidget()
 		]
-		+ SVerticalBox::Slot()
-		.AutoHeight()
-		[
-			SNew(SButton)
-				.Text(FText::FromString(TEXT("Test Button")))
-				.OnClicked_Lambda([]() -> FReply {
-				UE_LOG(LogTemp, Warning, TEXT("Button Clicked"));
-				return FReply::Handled();
-					})
-		]
+		
+
 	);
 }
