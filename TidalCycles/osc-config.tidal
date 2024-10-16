@@ -2,7 +2,7 @@ let target =
       Target {oName = "metasynthone",   -- A friendly name for the target (only used in error messages)
               oAddress = "127.0.0.1", -- The target's network address, normally "localhost"
               oPort = 7771,           -- The network port the target is listening on
-              oLatency = 0.01,         -- Additional delay, to smooth out network jitter/get things in sync
+              oLatency = 0.2,         -- Additional delay, to smooth out network jitter/get things in sync
               oSchedule = Live,       -- The scheduling method - see below
               oWindow = Nothing,      -- Not yet used
               oHandshake = False,     -- SuperDirt specific
@@ -17,11 +17,19 @@ let target =
                                      ("sustain", Just $ VF 1),
                                      ("release", Just $ VF 0.3),
                                      ("msp", Just $ VF 20000),
-                                     ("lpq", Just $ VF 1)
+                                     ("lpq", Just $ VF 1),
+                                     ("timescale", Just $ VF 1),
+                                     ("fmVol", Just $ VF 0.5),
+                                     ("fmFreq", Just $ VF 1),
+                                     ("delayWet", Just $ VF 0.0)
                                    ]
     volume = pF "volume"
     mn = pI "mn"
     msp = pF "msp"
+    timescale = pF "timescale"
+    fmVol = pF "fmVol"
+    fmFreq = pF "fmFreq"
+    delayWet = pF "delayWet"
     oscmap = [(target, [oscplay])]
 
 

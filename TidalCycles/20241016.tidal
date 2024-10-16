@@ -1,7 +1,30 @@
--- d1 $ sound "cp"
+d1
+  $ fast "<0.26>"
+  $ sound "[metal:0, sn:1/2]"
+  # gain "<1.0 1.5>"
+  # speed "<0.15 0.01>"
+
+d1 $ silence
+
+x1
+  $ sometimesBy 0.53 (# mn 100)
+  $ sometimesBy 0.33 (# fmVol 0.8)
+  $ fast "<0.23>"
+  -- $ fast 2
+  $ sound "foo/2"
+  # mn "<37>"
+  # fmVol "<0.4 0.1>"
+  # fmFreq "<1 5 8>"
+  # timescale "<1 3 2 1>"
+  # sustain "<0.1 0.4 0.6>"
+  # attack (slow 9 $ range 0.01 0.9 sine)
+  # release 0.95
+  # delayWet 0.5
+
 
 d2 $ sound "bd ~ sn:3 bd sn:5 ~ bd:2 sn:2"
 
+d2 $ silence
 
 once $ sound "cp"
 
@@ -11,14 +34,14 @@ once $ sound "cp"
 
 setcps (285/60/4)
 
-x1 $ fast "<3 3 3 1>"
-  $ s "foo"
-  # mn "<52 73 74 75 76 77 98>"
-  # msp "<20000 10000 5000 2000>"
-  # attack "<0.01>"
-  # sustain "<1>"
-  -- # pan 0.5
-  # volume "<1.0>"
+-- x1 $ fast "<3 3 3 1>"
+--   $ s "foo"
+--   # mn "<52 73 74 75 76 77 98>"
+--   # msp "<20000 10000 5000 2000>"
+--   # attack "<0.01>"
+--   # sustain "<1>"
+--   -- # pan 0.5
+--   # volume "<1.0>"
 
 x1 $ silence
 
@@ -29,32 +52,42 @@ x2 $ fast "<0.2>"
   # attack "<0.01>"
   # decay "0.5"
   # release 0.5
-  # sustain "<6>"
+  # sustain "<6 4 2>"
   # volume "<1.0>"
+  # fmVol 0.0
+  # timescale 4
+  # delayWet 0
 
 x2 $ silence
 
-x3 $ fast "<0.25>"
+x3 $ fast "<0.12>"
   $ s "foo"
   # mn "<73>"
-  # msp "<10000>"
-  # attack "<0.3>"
+  # msp "<150 5000 15000>"
+  # attack "<0.3 0.01 0.5>"
   # decay "0.5"
   # release 0.5
-  # sustain "<6>"
+  # sustain "<6 1 2>"
   # volume "<1.0>"
+  # fmVol 0.15
+  # fmFreq "<8 7 6>"
+  # timescale "<6 1 2>"
+  # delayWet "<0 0.2 0>"
 
 x3 $ silence
 
-x4 $ fast "<0.15>"
+x4 $ fast "<0.14>"
   $ s "foo"
-  # mn "<84>"
-  # msp "<15000>"
-  # attack "<0.6>"
+  # mn "<84 96>"
+  # msp "<500 1000 5000>"
+  # attack "<0.01 0.6 0.1>"
   # decay "0.5"
   # release 0.9
-  # sustain "<3>"
+  # sustain "<1 3 0.5>"
+  # timescale "<1 3 0.5>"
   # volume "<1.0>"
+  # fmVol 0.3
+
 
 x4 $ silence
 
