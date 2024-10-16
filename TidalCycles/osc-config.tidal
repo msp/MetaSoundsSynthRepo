@@ -1,0 +1,33 @@
+let target =
+      Target {oName = "metasynthone",   -- A friendly name for the target (only used in error messages)
+              oAddress = "127.0.0.1", -- The target's network address, normally "localhost"
+              oPort = 7771,           -- The network port the target is listening on
+              oLatency = 0.01,         -- Additional delay, to smooth out network jitter/get things in sync
+              oSchedule = Live,       -- The scheduling method - see below
+              oWindow = Nothing,      -- Not yet used
+              oHandshake = False,     -- SuperDirt specific
+              oBusPort = Nothing      -- Also SuperDirt specific
+             }
+    oscplay = OSC "/play" $ ArgList [("s", Just $ VS "Sine"),
+                                     ("mn", Just $ VI 70),
+                                     ("pan", Just $ VF 0.5),
+                                     ("volume", Just $ VF 0.7),
+                                     ("attack", Just $ VF 0.01),
+                                     ("decay", Just $ VF 0.2),
+                                     ("sustain", Just $ VF 1),
+                                     ("release", Just $ VF 0.3),
+                                     ("msp", Just $ VF 20000),
+                                     ("lpq", Just $ VF 1)
+                                   ]
+    volume = pF "volume"
+    mn = pI "mn"
+    msp = pF "msp"
+    oscmap = [(target, [oscplay])]
+
+
+stream <- startStream defaultConfig oscmap
+
+let x1 = streamReplace stream 1
+    x2 = streamReplace stream 2
+    x3 = streamReplace stream 3
+    x4 = streamReplace stream 4
