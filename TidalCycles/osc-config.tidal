@@ -21,7 +21,9 @@ let target =
                                      ("timescale", Just $ VF 1),
                                      ("fmVol", Just $ VF 0.5),
                                      ("fmFreq", Just $ VF 1),
-                                     ("delayWet", Just $ VF 0.0)
+                                     ("delayWet", Just $ VF 0.0),
+                                     ("delayFB", Just $ VF 0.1),
+                                     ("delayTime", Just $ VF 0.1)
                                    ]
     volume = pF "volume"
     mn = pI "mn"
@@ -30,6 +32,8 @@ let target =
     fmVol = pF "fmVol"
     fmFreq = pF "fmFreq"
     delayWet = pF "delayWet"
+    delayFB = pF "delayFB"
+    delayTime = pF "delayTime"
     oscmap = [(target, [oscplay])]
 
 

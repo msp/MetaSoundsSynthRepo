@@ -8,23 +8,32 @@ d1 $ silence
 
 x1 $ silence
 
+-- tron preset -----------------------------------------------------------------
 x1
   -- $ sometimesBy 0.53 (# mn 100)
-  -- $ sometimesBy 0.33 (# fmVol 0.8)
-  $ fast "<0.2>"
-  -- $ fast 2
-  $ sound "<simple sine white nodelay>"
-  -- # mn "<37>"
-  # mn "<57>"
+  -- $ sometimesBy 0.1 (# delayWet 0.7)
+  -- $ fast "<0.2>"
+  $ fast 2
+  -- $ sound "<simple sine white nodelay>"
+  $ sound "white"
+  # mn "<0 2 4 5 7 9 11>" |+ mn "24"
+  -- # mn "<57>"
   -- # fmVol "<0.4 0.1>"
-  # fmVol 0
-  -- # fmFreq "<1 5 8>"
-  -- # timescale "<1 3 2 1>*2"
-  # timescale 3
+  # fmVol 0.785
+  # fmFreq "0.011"
+  # timescale  (slow 9 $ range 4 8 rand)
+  # msp 20000
+  -- # timescale 3
   -- # sustain "<0.1 0.4 0.6>*2"
-  -- # attack (slow 9 $ range 0.01 0.9 sine)
-  # release 0.95
-  -- # delayWet 0
+  -- # attack (slow 9 $ range 0.01 0.1 sine)
+  # attack  (slow 9 $ range 0.1 0.9 sine)
+  # decay 0.5
+  # release "<0.5 0.95>"
+  # delayWet 0
+  -- # delayFB (slow 9 $ range 0.1 0.9 sine)
+  # delayTime 0
+  # volume 1
+
 
 
 d2 $ sound "bd ~ sn:3 bd sn:5 ~ bd:2 sn:2"
@@ -111,6 +120,25 @@ x4 $ fast "<0.14>"
 
 
 x4 $ silence
+
+
+-- OSC param control only ------------------------------------------------------
+x4 $ fast "100"
+  $ s "ignored"
+  # mn "<84 96>"
+  # msp "<5000>"
+  # attack 0.1
+  # decay "0.5"
+  # release 0.9
+  # sustain "<1 3 0.5>"
+  # timescale "<12>"
+  # volume "<1.0>"
+  # fmVol (slow 500 $ range 0.01 0.9 sine)
+  # fmFreq 10
+
+
+x4 $ silence
+
 
 -- huusssshh now
 do
