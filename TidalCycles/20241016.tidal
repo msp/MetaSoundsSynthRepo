@@ -8,35 +8,39 @@ d1 $ silence
 
 x1 $ silence
 
-let chance = 0
+let chance = 0.00001
 
 -- tron preset -----------------------------------------------------------------
 x1
-  $ sometimesBy chance (# timescale 1)
-  $ sometimesBy chance (# attack 0)
-  $ sometimesBy chance (# release 0.1)
-  $ sometimesBy chance (# delayWet 0.7)
-  $ sometimesBy chance (# delayFB 0.9)
+  -- $ sometimesBy chance (# timescale 1)
+  -- $ sometimesBy chance (# attack 0)
+  -- $ sometimesBy chance (# release 0.1)
+  -- $ sometimesBy (slow 250 $ range 0 0.5 sine) (# delayWet 0.7)
+  -- $ sometimesBy (slow 150 $ range 0 0.1 sine) (# bitcrush "<1 32 32 32 22 10>")
   -- $ fast "<0.2>"
   $ fast 20
   -- $ sound "<simple sine white nodelay>"
   $ sound "ignored"
   # mn "<0 2 4 5 7 9 11>" |+ mn "24"
   # fmVol (slow 150 $ range 0 1 sine)
+  -- # fmFreq (slow 150 $ range 0.011 1 sine)
   # fmFreq "0.011"
+  -- # fmFreq "0.9"
   # timescale  (slow 150 $ range 4 12 sine)
-  # msp (slow 400 $ range 500 3000 sine)
+  # msp (slow 400 $ range 300 10000 sine)
   -- # msp 500
-  # attack  (slow 220 $ range 0.05 0.9 sine)
+  # attack  (slow 320 $ range 0.08 0.3 sine)
   # decay 0.5
   # release (slow 200 $ range 0.2 0.9 sine)
-  # noise (slow 200 $ range 0 4 sine)
+  # noise (slow 200 $ range 0 2 sine)
   -- # noise 0
   -- # bitcrush (slow 300 $ range 1 32 sine)
   # delayWet 0
-  -- # delayFB (slow 9 $ range 0.1 0.9 sine)
-  # delayTime 0.2
-  # volume 1
+  # delayFB (slow 200 $ range 0.1 0.9 sine)
+  # delayTime 3
+  # volume 0.8
+
+
 
 
 
